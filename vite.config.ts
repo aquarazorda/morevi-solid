@@ -1,10 +1,10 @@
 import solid from "solid-start/vite";
 import { defineConfig } from "vite";
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 export default defineConfig({
-  plugins: [
-    solid({ ssr: false }),
-    vanillaExtractPlugin()
-  ],
+	plugins: [
+		solid({ ssr: true }),
+		vanillaExtractPlugin()
+	],
 });
