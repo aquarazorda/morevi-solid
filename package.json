@@ -15,10 +15,13 @@
     "vite": "^3.2.5"
   },
   "dependencies": {
+    "@solid-primitives/i18n": "^1.2.0",
     "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.7.0",
+    "@vanilla-extract/vite-plugin": "^3.8.0",
     "solid-js": "^1.6.11",
     "solid-start": "^0.2.21",
+    "ts-pattern": "^4.2.1",
     "undici": "^5.15.1"
   },
   "engines": {
