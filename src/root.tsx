@@ -1,5 +1,5 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import { Suspense } from 'solid-js';
 import {
 	Body,
 	ErrorBoundary,
@@ -9,13 +9,13 @@ import {
 	Link,
 	Scripts,
 	Title,
-} from "solid-start";
-import { createI18nContext, I18nContext } from "@solid-primitives/i18n";
-import { languageDict } from "./modules/language";
-import { App } from "./components/App";
+} from 'solid-start';
+import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
+import { languageDict } from './lib/language';
+import { App } from './components/App';
 
 export default function Root() {
-	const value = createI18nContext(languageDict, "en");
+	const value = createI18nContext(languageDict, 'en');
 
 	return (
 		<Html lang="en">

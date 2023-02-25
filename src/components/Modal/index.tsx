@@ -1,5 +1,5 @@
-import { createSignal, JSX, Show } from "solid-js";
-import { modalOverlay, modalWrapper } from "./Modal.css";
+import { createSignal, JSX, Show } from 'solid-js';
+import { modalOverlay, modalWrapper } from './Modal.css';
 
 type ModalState = {
   isOpen: boolean;
