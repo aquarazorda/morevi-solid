@@ -4,7 +4,6 @@ import server$, { createServerData$ } from 'solid-start/server';
 
 export function routeData() {
 	return createServerData$(async () => {
-		console.log(process);
 		return {
 			title: 'Morevi.ge',
 		};
