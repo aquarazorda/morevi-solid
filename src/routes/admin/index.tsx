@@ -1,9 +1,10 @@
-import { Accessor, createEffect, Resource } from 'solid-js';
+import { createEffect } from 'solid-js';
 import { useRouteData } from 'solid-start';
 import server$, { createServerData$ } from 'solid-start/server';
 
 export function routeData() {
 	return createServerData$(async () => {
+		console.log(process);
 		return {
 			title: 'Morevi.ge',
 		};

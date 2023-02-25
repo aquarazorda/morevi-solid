@@ -2,7 +2,6 @@ import { createClient } from '@supabase/supabase-js';
 
 // const { SB_URL, SB_PUB_KEY } = process.env;
 
-console.log(process.env);
 
 // if (!SB_URL || !SB_PUB_KEY) {
 // 	throw new Error('Error loading env variables');
