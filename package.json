@@ -8,6 +8,7 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^18.11.18",
+    "@types/woocommerce__woocommerce-rest-api": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "esbuild": "^0.14.54",
@@ -26,6 +27,7 @@
     "@supabase/supabase-js": "^2.8.0",
     "@vanilla-extract/sprinkles": "^1.5.1",
     "@vanilla-extract/vite-plugin": "^3.8.0",
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "solid-js": "^1.6.11",
     "solid-js-form": "^0.1.8",
     "solid-start": "^0.2.21",

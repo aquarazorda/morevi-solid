@@ -10,7 +10,7 @@ import { Auth } from '../Auth/Auth';
 
 export const Header = () => {
 	const [t] = useI18n();
-
+	
 	return <div class={headerWrapper}>
 		<A href='/' class={logoWrapper}>
 			<img src="/images/logo.png" />
