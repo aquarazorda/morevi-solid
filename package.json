@@ -23,11 +23,14 @@
     "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.7.0",
     "@supabase/supabase-js": "^2.8.0",
+    "@vanilla-extract/sprinkles": "^1.5.1",
     "@vanilla-extract/vite-plugin": "^3.8.0",
     "solid-js": "^1.6.11",
+    "solid-js-form": "^0.1.8",
     "solid-start": "^0.2.21",
     "ts-pattern": "^4.2.1",
-    "undici": "^5.15.1"
+    "undici": "^5.15.1",
+    "yup": "^1.0.0"
   },
   "engines": {
     "node": ">=16.8"
