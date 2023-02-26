@@ -5,6 +5,7 @@ import {
 	ErrorBoundary,
 	Head,
 	Html,
+	Link,
 	Meta,
 	Scripts,
 	Title,
@@ -40,6 +41,7 @@ export default function Root() {
 				<Meta charset="utf-8" />
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
 				<Meta name="description" content="Morevi.Ge Main Page" />
+				<Link rel="preload" href="/fonts/Oxanium/Oxanium-VariableFont_wght.ttf" as="font" crossOrigin='anonymous' />
 			</Head>
 			<Body>
 				<Suspense>

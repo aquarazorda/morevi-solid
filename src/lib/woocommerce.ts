@@ -1,10 +1,16 @@
-import { Product, productSchemaList } from './schemas/wcProducts';
+import { Product } from './schemas/wcProducts';
 
 
 export const getProducts = async (page: number) => {
 	const res = await fetch(`/api/products/${page}`);
-	const list = await res.json() as Product[];
-	const parsed = productSchemaList.safeParse(list);
+	const products = await res.json() as Product[];
 	
-	return parsed.success ? parsed.data : [];
+	return products;
+};
+
+export const getProduct = async (id: string) => {
+	const res = await fetch(`/api/product/${id}`);
+	const product = await res.json() as Product;
+
+	return product;
 };

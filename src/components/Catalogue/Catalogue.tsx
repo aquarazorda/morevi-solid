@@ -15,7 +15,7 @@ export const Catalogue = () => {
 	});
 
 	const handleScroll = () => {
-		if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+		if (window.innerHeight + window.scrollY >= document.body.offsetHeight && res().isSuccess) {
 			setNextPage();
 		}
 	};

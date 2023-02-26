@@ -13,6 +13,13 @@ import { setThemeMode, themeMode } from '~/root';
 export const Header = () => {
 	const [t] = useI18n();
 	const navigate = useNavigate();
+
+	const toggleTheme = () => {
+		setThemeMode(prev => {
+			localStorage.setItem('color-schema', prev === 'dark' ? 'light' : 'dark');
+			return prev === 'dark' ? 'light' : 'dark';
+		});
+	};
 	
 	return <div class={headerWrapper}>
 		<A href='/' class={logoWrapper}>
@@ -28,7 +35,7 @@ export const Header = () => {
 			<button class={btn.plain} aria-label={t('shopping_cart')}>
 				<ShoppingCart />
 			</button>
-			<button class={btn.plain} onClick={() => setThemeMode(prev => prev === 'dark' ? 'light' : 'dark')} aria-label={t('theme')}>
+			<button class={btn.plain} onClick={() => toggleTheme()} aria-label={t('theme')}>
 				{themeMode() === 'dark' ? '🌑' : '🌕'}
 			</button>
 		</div>

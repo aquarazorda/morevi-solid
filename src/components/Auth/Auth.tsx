@@ -2,7 +2,6 @@ import { flexCentered } from '~/styles/common.css';
 import { sps } from '~/styles/sprinkles.css';
 import { InferType, object, string } from 'yup';
 import { Form, FormInput } from '../Form';
-import supabase from '~/server/supabase';
 
 const loginSchema = object({
 	email: string().required('email_is_required').email('email_is_invalid'),

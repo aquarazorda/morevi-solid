@@ -4,7 +4,7 @@ import { themeVars } from './themes/base.css';
 const oxanium = 'Oxanium';
 
 globalFontFace(oxanium, {
-	src: 'url(/fonts/Oxanium/Oxanium-VariableFont_wght.ttf)',
+	src: 'local("Oxanium"), url(/fonts/Oxanium/Oxanium-VariableFont_wght.ttf)',
 });
 
 export default globalStyle('html, body', {
