@@ -19,16 +19,16 @@ export const Header = () => {
 			<img src="/images/logo.png" alt="logo" />
 		</A>
 		<div class={flexCentered}>
-			<button class={btn.plain}>
+			<button class={btn.plain} aria-label={t('search')}>
 				<SearchIcon />
 			</button>
 			<button class={btn.black} onClick={() => navigate('/admin')}>{t('categories')}</button>
 			<button class={btn.plain}>{t('sort_by')}</button>
 			<button class={btn.black} onClick={() => showModal(Auth)}>{t('sign_in')}</button>
-			<button class={btn.plain}>
+			<button class={btn.plain} aria-label={t('shopping_cart')}>
 				<ShoppingCart />
 			</button>
-			<button class={btn.plain} onClick={() => setThemeMode(prev => prev === 'dark' ? 'light' : 'dark')}>
+			<button class={btn.plain} onClick={() => setThemeMode(prev => prev === 'dark' ? 'light' : 'dark')} aria-label={t('theme')}>
 				{themeMode() === 'dark' ? '🌑' : '🌕'}
 			</button>
 		</div>
