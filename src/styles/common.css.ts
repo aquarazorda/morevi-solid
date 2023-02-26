@@ -1,18 +1,20 @@
-import { style, globalStyle, styleVariants } from "@vanilla-extract/css";
+import { style, globalStyle } from '@vanilla-extract/css';
+import { themeVars } from './themes/base.css';
 
-const oxanium = "Oxanium, sans-serif";
+const oxanium = 'Oxanium, sans-serif';
 
-export default globalStyle("html, body", {
+export default globalStyle('html, body', {
 	fontFamily: oxanium,
-	backgroundColor: "#0c1116"
+	color: themeVars.colors.textPrimary,
+	backgroundColor: themeVars.colors.bg,
 });
 
 export const bodyStyle = style({
-	padding: "2% 5%"
+	padding: '2% 5%'
 });
 
 export const flexCentered = style({
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center"
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center'
 });

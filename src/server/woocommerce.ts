@@ -1,5 +1,5 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
-import { json } from 'solid-start';
+import { APIEvent, json } from 'solid-start';
 
 const wcApi = new WooCommerceRestApi({
 	url: 'https://morevi.ge',
@@ -8,7 +8,11 @@ const wcApi = new WooCommerceRestApi({
 	version: 'wc/v3'
 });
 
-export const getProducts = async () => {
-	const res = await wcApi.get('products', { per_page: 20 });
+export const getProducts = async ({ params }: APIEvent) => {
+	const res = await wcApi.get('products', { 
+		per_page: 8, 
+		page: params.page || 1,
+		status: 'publish'
+	});
 	return json(res.data);
 };

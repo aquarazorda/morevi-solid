@@ -25,6 +25,8 @@
     "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.7.0",
     "@supabase/supabase-js": "^2.8.0",
+    "@tanstack/solid-query": "^4.24.10",
+    "@vanilla-extract/dynamic": "^2.0.3",
     "@vanilla-extract/sprinkles": "^1.5.1",
     "@vanilla-extract/vite-plugin": "^3.8.0",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",

@@ -1,6 +1,5 @@
 import { flexCentered } from '~/styles/common.css';
 import { sps } from '~/styles/sprinkles.css';
-import { css } from '~/styles/utils';
 import { InferType, object, string } from 'yup';
 import { Form, FormInput } from '../Form';
 import supabase from '~/server/supabase';
@@ -32,7 +31,7 @@ export const Auth = () => {
 		}
 	};
 
-	return <div class={css([flexCentered, sps({ flexDirection: 'column'})])}>
+	return <div class={`${flexCentered} ${sps({ flexDirection: 'column'})}`}>
 		<h1>Sign In</h1>
 		<Form onSubmit={onSubmit} schema={loginSchema} inputs={inputs} column />
 	</div>;
