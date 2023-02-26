@@ -6,7 +6,6 @@ import {
 	Head,
 	Html,
 	Meta,
-	Link,
 	Scripts,
 	Title,
 } from 'solid-start';
@@ -40,7 +39,7 @@ export default function Root() {
 				<Title>Morevi.ge</Title>
 				<Meta charset="utf-8" />
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
-				<Link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Oxanium" />
+				<Meta name="description" content="Morevi.Ge Main Page" />
 			</Head>
 			<Body>
 				<Suspense>

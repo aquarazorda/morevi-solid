@@ -1,7 +1,11 @@
-import { style, globalStyle } from '@vanilla-extract/css';
+import { style, globalStyle, globalFontFace } from '@vanilla-extract/css';
 import { themeVars } from './themes/base.css';
 
-const oxanium = 'Oxanium, sans-serif';
+const oxanium = 'Oxanium';
+
+globalFontFace(oxanium, {
+	src: 'url(/fonts/Oxanium/Oxanium-VariableFont_wght.ttf)',
+});
 
 export default globalStyle('html, body', {
 	fontFamily: oxanium,

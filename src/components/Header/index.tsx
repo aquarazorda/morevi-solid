@@ -16,7 +16,7 @@ export const Header = () => {
 	
 	return <div class={headerWrapper}>
 		<A href='/' class={logoWrapper}>
-			<img src="/images/logo.png" />
+			<img src="/images/logo.png" alt="logo" />
 		</A>
 		<div class={flexCentered}>
 			<button class={btn.plain}>

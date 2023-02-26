@@ -14,9 +14,10 @@ export const productWrapper = style([
 ]);
 
 export const productImage = style([
+	{ objectFit: 'cover' },
 	sps({
-		width: 'item',
 		height: 'item',
+		width: 'item',
 		borderLeft: 'medium',
 	})
 ]);
