@@ -8,17 +8,18 @@ const space = {
 	none: 0,
 	small: '4px',
 	medium: '8px',
-	large: '16px'
+	large: '16px',
+	bigMargin: '60px',
 	// etc.
 };
 
 const responsiveProperties = defineProperties({
 	conditions: {
-		mobile: {},
-		tablet: { '@media': 'screen and (min-width: 768px)' },
-		desktop: { '@media': 'screen and (min-width: 1024px)' }
+		mobile: { '@media': 'screen and (min-width: 768px)' },
+		// tablet: { '@media': 'screen and (min-width: 768px)' },
+		desktop: { }
 	},
-	defaultCondition: 'mobile',
+	defaultCondition: 'desktop',
 	properties: {
 		display: ['none', 'flex', 'block', 'inline'],
 		flexDirection: ['row', 'column'],
@@ -41,8 +42,10 @@ const responsiveProperties = defineProperties({
 		paddingLeft: space,
 		paddingRight: space,
 		gap: space,
-		borderRadius: space
-		// etc.
+		borderRadius: space,
+		borderTopLeftRadius: space,
+		borderBottomLeftRadius: space,
+		marginBottom: space,
 	},
 	shorthands: {
 		padding: [
@@ -53,7 +56,20 @@ const responsiveProperties = defineProperties({
 		],
 		paddingX: ['paddingLeft', 'paddingRight'],
 		paddingY: ['paddingTop', 'paddingBottom'],
-		placeItems: ['justifyContent', 'alignItems']
+		placeItems: ['justifyContent', 'alignItems'],
+		borderLeft: ['borderTopLeftRadius', 'borderBottomLeftRadius']
+	}
+});
+
+const unresponsiveSpace = {
+	item: '140px',
+};
+
+const unresponsiveProperties = defineProperties({
+	properties: {
+		maxHeight: unresponsiveSpace,
+		height: unresponsiveSpace,
+		width: unresponsiveSpace,
 	}
 });
 
@@ -61,12 +77,14 @@ export const colorProperties = defineProperties({
 	properties: {
 		color: themeVars.colors,
 		background: themeVars.colors,
-		backgroundColor: themeVars.colors
+		backgroundColor: themeVars.colors,
+		borderColor: themeVars.colors
 		// etc.
 	}
 });
 
 export const sps = createSprinkles(
 	responsiveProperties,
+	unresponsiveProperties,
 	colorProperties
 );
