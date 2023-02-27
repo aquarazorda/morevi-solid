@@ -25,7 +25,7 @@ export const Product = (props: Props) => {
 			<img src={props.item.images[0].src} alt={props.item.images[0].alt} class={wh100} />
 		</div>
 		<div class={productDescriptionWrapper}>
-			{`${props.item.name} - ${props.item.price} ₾`}
+			{props.item.name} - {props.item.price} ₾
 			<div>{desc}</div>
 			<button onClick={() => navigate(`/products/${props.item.id}`)}>See More</button>
 			<Show when={!isInShoppingCart(props.item.id)}>

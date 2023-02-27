@@ -1,12 +1,20 @@
 import { For } from 'solid-js';
-import { shoppingCart } from '~/lib/cart';
+import { useNavigate } from 'solid-start';
+import { initializeBuy, shoppingCart } from '~/lib/cart';
 import { Product } from '../Catalogue/Product';
 
 export const ShoppingCart = () => {
+	const navigate = useNavigate();
+	
+	const onBuy = async () => {
+		const redirectUrl = await initializeBuy(shoppingCart());
+		if (redirectUrl) navigate(redirectUrl);
+	};
+
 	return <>
-		<For each={shoppingCart()}>
+		<For each={shoppingCart()} fallback={<div>Empty shopping cart</div>}>
 			{product => <Product item={product} />}
 		</For>
-		<button>Buy</button>
+		<button onClick={() => onBuy()}>Buy</button>
 	</>;
 };

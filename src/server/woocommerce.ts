@@ -1,6 +1,6 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
-import { APIEvent, json } from 'solid-start';
-import { productSchema, productSchemaList } from '~/lib/schemas/wcProducts';
+import { json } from 'solid-start';
+import { Product, productSchema, productSchemaList } from '~/lib/schemas/wcProducts';
 
 if (!process.env.WP_CONSUMER_KEY || !process.env.WP_CONSUMER_SECRET) {
 	throw new Error('WooCommerce is not configured');
@@ -30,4 +30,25 @@ export const getProduct = async (id: string) => {
 	const parsed = productSchema.safeParse(res);
 
 	return json(parsed.success ? parsed.data : null);
+};
+
+export const checkAvailability = async (ids: number[]) => {
+	const res = await wcApi.get('products', { 
+		include: ids
+	});
+	const parsed = productSchemaList.safeParse(res.data);
+
+	if (!parsed.success) return null;
+	
+	const { available, unavailable } =  parsed.data.reduce((acc, product) => ({
+		available: product.stock_quantity > 0 ? [...acc.available, product] : acc.available,
+		unavailable: product.stock_quantity > 0 ? acc.unavailable : [...acc.unavailable, product]
+	}), 
+	{ available: [] as Product[], unavailable: [] as Product[] });
+
+	return {
+		isAvailable: unavailable.length === 0,
+		available,
+		unavailable
+	};
 };

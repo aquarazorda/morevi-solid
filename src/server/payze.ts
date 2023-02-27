@@ -1,3 +1,4 @@
+import server$ from 'solid-start/server';
 import { z } from 'zod';
 
 const buyProductSchema = z.object({
@@ -13,11 +14,11 @@ const buyProductSchema = z.object({
 
 type BuyProductInput = z.infer<typeof buyProductSchema>;
 
-const attemptBuyProduct = async (ids: number[], props: BuyProductInput) => {
+const _attemptBuyProduct = async (props: BuyProductInput) => {
 	if (!process.env.PAYZE_API_KEY && !process.env.PAYZE_API_SECRET) {
 		throw new Error('Payze is not configured');
 	}
-  
+
 	const options = {
 		method: 'POST',
 		headers: {accept: 'application/json', 'content-type': 'application/json'},
@@ -42,6 +43,11 @@ const attemptBuyProduct = async (ids: number[], props: BuyProductInput) => {
 
 	return await fetch(process.env.PAYZE_URL, options)
 		.then(response => response.json())
-		.then(response => console.log(response))
-		.catch(err => console.error(err));
+		.then(({ response }) => response?.transactionId 
+			? '/payment/transaction/' + response.transactionId
+			: '/payment/failed'
+		)
+		.catch(err => '/payment/failed');
 };
+
+export const attemptBuyProduct = server$(_attemptBuyProduct);
