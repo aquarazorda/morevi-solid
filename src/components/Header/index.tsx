@@ -32,7 +32,7 @@ export const Header = () => {
 			<button class={btn.black} onClick={() => navigate('/admin')}>{t('categories')}</button>
 			<button class={btn.plain}>{t('sort_by')}</button>
 			<button class={btn.black} onClick={() => showModal(Auth)}>{t('sign_in')}</button>
-			<button class={btn.plain} aria-label={t('shopping_cart')}>
+			<button class={btn.plain} aria-label={t('shopping_cart')} onClick={() => navigate('/cart')}>
 				<ShoppingCart />
 			</button>
 			<button class={btn.plain} onClick={() => toggleTheme()} aria-label={t('theme')}>

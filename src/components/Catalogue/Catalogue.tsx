@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal, For, onCleanup, Show } from 'solid-js';
+import { createEffect, createSignal, For, onCleanup, Show } from 'solid-js';
 import { Product as WCProduct } from '~/lib/schemas/wcProducts';
 import { useProducts } from '~/resources/useProducts';
 import { Product } from './Product';
@@ -6,16 +6,16 @@ import { Product } from './Product';
 export const Catalogue = () => {
 	const [page, setPage] = createSignal(1);
 	const [products, setProducts] = createSignal<WCProduct[]>([]);
-	const res = createMemo(() => useProducts(page));
+	const res = useProducts(page);
 
 	const setNextPage = () => setPage(page() + 1);
 
 	createEffect(() => {
-		if (res().data && res().isSuccess) setProducts(prev => [...prev, ...res().data as WCProduct[]]);
+		if (res.data && res.isSuccess) setProducts(prev => [...prev, ...res.data as WCProduct[]]);
 	});
 
 	const handleScroll = () => {
-		if (window.innerHeight + window.scrollY >= document.body.offsetHeight && res().isSuccess) {
+		if (window.innerHeight + window.scrollY >= document.body.offsetHeight && res.isSuccess) {
 			setNextPage();
 		}
 	};

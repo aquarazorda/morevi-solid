@@ -4,7 +4,7 @@ import { Header } from './Header';
 import { Modal } from './Modal';
 
 export const App = () => {
-	
+
 	return <div class={bodyStyle}>
 		<Header />
 		<Routes>

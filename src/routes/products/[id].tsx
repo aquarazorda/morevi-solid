@@ -1,15 +1,14 @@
 import { createQuery } from '@tanstack/solid-query';
 import { RouteDataArgs } from 'solid-start';
-import { getProduct } from '~/lib/woocommerce';
+import server$ from 'solid-start/server';
 import { defaultQueryParams, queries } from '~/resources/queries';
+import { getProduct } from '~/server/woocommerce';
 
-export function routeData({ params }: RouteDataArgs) {
-	return createQuery(
-		() => queries.product(params.id),
-		() => getProduct(params.id),
-		defaultQueryParams
-	);
-}
+export const routeData = ({ params }: RouteDataArgs) => createQuery(
+	() => queries.product(params.id),
+	() => server$(getProduct)(params.id),
+	defaultQueryParams
+);
 
 export default function Product() {
 	return <div>Product</div>;

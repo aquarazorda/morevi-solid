@@ -13,8 +13,12 @@ export const productWrapper = style([
 	}),
 ]);
 
+export const productDescriptionWrapper = style([
+	{flex: '1'},
+	sps({ display: 'flex', flexDirection: 'column', gap: 'medium' })
+]);
+
 export const productImage = style([
-	{ objectFit: 'cover' },
 	sps({
 		height: 'item',
 		width: 'item',

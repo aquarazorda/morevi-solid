@@ -13,20 +13,20 @@ const wcApi = new WooCommerceRestApi({
 	version: 'wc/v3'
 });
 
-export const getProducts = async ({ params }: APIEvent) => {
+export const getProducts = async (page: number) => {
 	const res = await wcApi.get('products', { 
 		per_page: 8, 
-		page: params.page || 1,
+		page: page || 1,
 		status: 'publish'
 	}).then((res) => res.data);
 	
 	const parsed = productSchemaList.safeParse(res);
 
-	return json(parsed.success ? parsed.data : []);
+	return parsed.success ? parsed.data : [];
 };
 
-export const getProduct = async ({ params }: APIEvent) => {
-	const res = await wcApi.get(`products/${params.id}`).then((res) => res.data);
+export const getProduct = async (id: string) => {
+	const res = await wcApi.get(`products/${id}`).then((res) => res.data);
 	const parsed = productSchema.safeParse(res);
 
 	return json(parsed.success ? parsed.data : null);

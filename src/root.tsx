@@ -1,5 +1,5 @@
 // @refresh reload
-import { createEffect, createSignal, onMount, Suspense } from 'solid-js';
+import { createEffect, createSignal, Suspense } from 'solid-js';
 import {
 	Body,
 	ErrorBoundary,
@@ -27,12 +27,9 @@ export default function Root() {
 	// @ts-ignore
 	let html;
 	const value = createI18nContext(languageDict, 'en');
-
-	onMount(() => {
-		//eslint-disable-next-line
-		// @ts-ignore
-		createEffect(() => setElementVars(html, themeVars, themeMode() === 'dark' ? darkTheme : lightTheme));
-	});
+	//eslint-disable-next-line
+	// @ts-ignore
+	createEffect(() => setElementVars(html, themeVars, themeMode() === 'dark' ? darkTheme : lightTheme));
 
 	return (
 		<Html lang="en" ref={html}>

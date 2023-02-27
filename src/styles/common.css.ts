@@ -22,3 +22,8 @@ export const flexCentered = style({
 	justifyContent: 'center',
 	alignItems: 'center'
 });
+
+export const wh100 = style({
+	width: '100%',
+	height: '100%'
+});
