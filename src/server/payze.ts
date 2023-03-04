@@ -1,18 +1,19 @@
+import { number, type, refinement, string, TypeOf } from 'io-ts';
 import server$ from 'solid-start/server';
-import { z } from 'zod';
 
-const buyProductSchema = z.object({
-	amount: z.number().positive().int(),
-	currency: z.string().min(3),
-	lang: z.string().min(2),
-	info: z.object({
-		description: z.string().min(1),
-		image: z.string().url(),
-		name: z.string().min(1)
+
+const buyProductSchema = type({
+	amount: refinement(number, n => n > 0),
+	currency: refinement(string, s => s.length === 3),
+	lang: refinement(string, s => s.length === 2),
+	info: type({
+		description: refinement(string, s => s.length > 3),
+		image: string,
+		name: string,
 	})
 });
 
-type BuyProductInput = z.infer<typeof buyProductSchema>;
+type BuyProductInput = TypeOf<typeof buyProductSchema>;
 
 const _attemptBuyProduct = async (props: BuyProductInput) => {
 	if (!process.env.PAYZE_API_KEY && !process.env.PAYZE_API_SECRET) {

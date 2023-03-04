@@ -1,26 +1,28 @@
-import { z } from 'zod';
+import { array, number, refinement, string, type, TypeOf } from 'io-ts';
 
-export const categorySchema = z.object({
-	id: z.number(),
-	name: z.string(),
-	slug: z.string(),
+
+export const categorySchema = type({
+	id: number,
+	name: string,
+	slug: string,
 });
 
-export const imageSchema = z.object({
-	alt: z.string(),
-	src: z.string(),
+export const imageSchema = type({
+	alt: string,
+	src: string,
 });
 
-export const productSchema = z.object({
-	id: z.number(),
-	name: z.string(),
-	categories: z.array(categorySchema),
-	images: z.array(imageSchema),
-	price: z.string(),
-	short_description: z.string(),
-	stock_quantity: z.number(),
+export const productSchema = type({
+	id: number,
+	name: string,
+	categories: array(categorySchema),
+	images: array(imageSchema),
+	price: string,
+	short_description: string,
+	stock_quantity: refinement(number, n => n >= 0),
 });
 
-export const productSchemaList = z.array(productSchema);
+export const productSchemaList = array(productSchema);
 
-export type Product = z.infer<typeof productSchema>;
+export type Product = TypeOf<typeof productSchema>;
+export type ProductList = TypeOf<typeof productSchemaList>;
