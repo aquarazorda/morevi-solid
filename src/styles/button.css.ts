@@ -1,4 +1,4 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { sps } from './sprinkles.css';
 
 const base = {
@@ -11,15 +11,17 @@ const base = {
 	lineHeight: '19px',
 	fontWeight: 800,
 	fontSize: 16,
-	height: 32
+	height: 32,
+	color: 'textPrimary'
 };
 
-const black = [base, sps({ borderRadius: 'medium', backgroundColor: 'bgButton', color: 'textPrimary' })];
-
-const plain = [base, sps({ color: 'textPrimary'})];
+const black = [
+	base,
+	// sps({ borderRadius: 'medium', backgroundColor: 'bgButton' })
+];
 
 export const btn = styleVariants({
-	plain,
+	plain: base,
 	black
 });
 

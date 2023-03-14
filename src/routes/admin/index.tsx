@@ -1,12 +1,18 @@
-import { createRouteData, useRouteData } from 'solid-start';
+import { Show } from 'solid-js';
+import { useRouteData } from 'solid-start';
+import { ShowEither } from '~/components/ShowEither';
 import { fetchFolders } from '~/server/discogs';
 
-export const routeData = () => createRouteData(fetchFolders);
+export const routeData = fetchFolders;
 
 const Admin = () => {
-	const folders = useRouteData<typeof routeData>();
+	const { data, isFetching } = useRouteData<typeof routeData>();
 
-	return <div>{JSON.stringify(folders())}</div>;
+	return <Show when={!isFetching()} fallback={<>Loading</>}>
+		<ShowEither either={data()!} fallback={<>Invalid data</>}>
+			{(folders) => folders.map(folder => <div>{folder.name}</div>)}
+		</ShowEither>
+	</Show>;
 };
 
 export default Admin;

@@ -13,13 +13,12 @@ import {
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
 import { languageDict } from './lib/language';
 import { App } from './components/App';
-import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 import { darkTheme } from './styles/themes/dark.css';
 import { lightTheme } from './styles/themes/light.css';
 import { setElementVars } from '@vanilla-extract/dynamic';
 import { themeVars } from './styles/themes/base.css';
+import { CacheBoundary } from 'solid-cache';
 
-const queryClient = new QueryClient();
 export const [themeMode, setThemeMode] = createSignal('dark');
 
 export default function Root() {
@@ -44,9 +43,9 @@ export default function Root() {
 				<Suspense>
 					<ErrorBoundary>
 						<I18nContext.Provider value={value}>
-							<QueryClientProvider client={queryClient}>
+							<CacheBoundary>
 								<App />
-							</QueryClientProvider>
+							</CacheBoundary>
 						</I18nContext.Provider>
 					</ErrorBoundary>
 				</Suspense>

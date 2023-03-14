@@ -5,11 +5,15 @@ import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
 	plugins: [
-		solid({ ssr: true, adapter: vercel({
-			prerender: {
-				expiration: 60
-			}
-		}) }),
-		vanillaExtractPlugin()
+		solid({ ssr: true, 
+			// adapter: vercel({
+			// 	prerender: {
+			// 		expiration: 60
+			// 	}})
+		}
+		),
+		vanillaExtractPlugin({
+			emitCssInSsr: true
+		})
 	],
 });

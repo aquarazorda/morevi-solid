@@ -1,9 +1,10 @@
 import { onMount } from 'solid-js';
-import { ShoppingCart } from '~/components/Cart';
-import { loadCartFromStore } from '~/lib/cart';
+// import { ShoppingCart } from '~/components/Cart';
+// import { loadCartFromStore } from '~/lib/cart';
 
 export default function Cart() {
-	onMount(() => loadCartFromStore());
+	// onMount(() => loadCartFromStore());
 
-	return <ShoppingCart />;
+	// return <ShoppingCart />;
+	return <div>Shopping cart</div>;
 }

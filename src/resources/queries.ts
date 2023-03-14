@@ -7,5 +7,6 @@ export const defaultQueryParams = {
 
 export const queries = {
 	products: (page: number) => ['products', page],
-	product: (id: string) => ['product', id]
+	product: (id: string) => ['product', id],
+	discogsFolders: 'dc_folders'
 };
